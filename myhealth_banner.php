@@ -22,7 +22,7 @@ if (!defined('_PS_VERSION_')) {
     exit();
 }
 
-class myHealthBanner extends Module
+class MyHealthBanner extends Module
 {
     public function __construct()
     {
@@ -49,17 +49,17 @@ class myHealthBanner extends Module
     public function install(): bool
     {
         return (
-            parent::install() &&
-            $this->registerHook('displayBanner') &&
-            Configuration::updateValue('MYHEALTHBANNER', 'My Health Banner')
+            parent::install()
+            && $this->registerHook('displayBanner')
+            && Configuration::updateValue('MYHEALTHBANNER', 'My Health Banner')
         );
     }
 
     public function uninstall(): bool
     {
         return (
-            parent::uninstall() &&
-            Configuration::deleteByName('MYHEALTHBANNER')
+            parent::uninstall()
+            && Configuration::deleteByName('MYHEALTHBANNER')
         );
     }
 }
