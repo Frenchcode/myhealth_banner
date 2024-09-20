@@ -45,4 +45,21 @@ class myHealthBanner extends Module
             $this->warning = $this->trans('No name provided', [], 'Modules.Myhealthbanner.Admin');
         }
     }
+
+    public function install(): bool
+    {
+        return (
+            parent::install() &&
+            $this->registerHook('displayBanner') &&
+            Configuration::updateValue('MYHEALTHBANNER', 'My Health Banner')
+        );
+    }
+
+    public function uninstall(): bool
+    {
+        return (
+            parent::uninstall() &&
+            Configuration::deleteByName('MYHEALTHBANNER')
+        );
+    }
 }
