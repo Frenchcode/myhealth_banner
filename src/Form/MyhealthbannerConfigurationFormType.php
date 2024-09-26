@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace naslim\modules\myhealthbanner\Form;
+namespace PrestaShop\Module\MyHealthBanner\Form;
 
 use Doctrine\DBAL\Types\TextType;
 use PrestaShopBundle\Form\Admin\Type\TranslatorAwareType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class MyhealthbannerConfiguration extends TranslatorAwareType
+class MyhealthbannerConfigurationFormType extends TranslatorAwareType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
