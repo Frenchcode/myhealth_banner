@@ -3,9 +3,13 @@ services:
     public: true
 
   # Demo configuration text form
-  prestashop.module.Myhealthbanner.form.type.Myhealthbanner_text:
+  prestashop.module.myhealthbanner.form.type.myhealthbanner_text:
     class: 'PrestaShop\Module\Myhealthbanner\Form\MyhealthbannerConfigurationFormType'
     parent: 'form.type.translatable.aware'
     public: true
     tags:
       - { name: form.type }
+
+  prestashop.module.myhealthbanner.form.myhealthbanner_text_data_configuration:
+    class: 'PrestaShop\Module\Myhealthbanner\Form\MyhealthbannerTextDataConfiguration'
+    arguments: [ '@prestashop.adapter.legacy.configuration' ]
