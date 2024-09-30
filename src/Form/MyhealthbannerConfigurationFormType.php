@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace PrestaShop\Module\MyHealthBanner\Form;
 
-use Doctrine\DBAL\Types\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use PrestaShopBundle\Form\Admin\Type\TranslatorAwareType;
 use Symfony\Component\Form\FormBuilderInterface;
 

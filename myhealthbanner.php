@@ -30,7 +30,7 @@ class MyHealthBanner extends Module
     {
         $this->name = 'myhealthbanner';
         $this->tab = 'front_office_features';
-        $this->version = '1.0.1';
+        $this->version = '2.0.1';
         $this->author = 'Ephraim Bokuma';
         $this->author_uri = 'https://www.ephraimbokuma.com';
         $this->need_instance = 0;
@@ -64,4 +64,14 @@ class MyHealthBanner extends Module
             && Configuration::deleteByName('MYHEALTHBANNER')
         );
     }
+
+    /**
+     * @throws Exception
+     */
+    public function getContent(): void
+    {
+        $route = $this->get('router')->generate('myhealthbanner_configuration_form_simple');
+        Tools::redirectAdmin($route);
+    }
+
 }

@@ -9,7 +9,7 @@ use PrestaShop\PrestaShop\Core\ConfigurationInterface;
 /**
  * Configuration is used to save data to configuration table and retrieve from it.
  */
-final class MyhealthbannerTextDataConfiguration implements DataConfigurationInterface
+final class MyhealthbannerConfigurationTextDataConfiguration implements DataConfigurationInterface
 {
     public const MY_HEALTHBANNER_FORM_TEXT_TYPE = 'MY_HEALTHBANNER_FORM_TEXT_TYPE';
     public const CONFIG_MAXLENGTH = '32';
@@ -27,7 +27,7 @@ final class MyhealthbannerTextDataConfiguration implements DataConfigurationInte
     public function getConfiguration(): array
     {
         $return = [];
-        $return['config_text'] = $this->configuration->get(self::MY_HEALTHBANNER_FORM_TEXT_TYPE);
+        $return['config_text'] = $this->configuration->get(static::MY_HEALTHBANNER_FORM_TEXT_TYPE);
 
         return $return;
     }
@@ -41,8 +41,8 @@ final class MyhealthbannerTextDataConfiguration implements DataConfigurationInte
         $errors = [];
 
         if ($this->validateConfiguration($configuration)) {
-            if (strlen($configuration['config_text']) > static::CONFIG_MAXLENGTH) {
-                $this->configuration->set(self::MY_HEALTHBANNER_FORM_TEXT_TYPE, $configuration['config_text']);
+            if (strlen($configuration['config_text']) <= static::CONFIG_MAXLENGTH) {
+                $this->configuration->set(static::MY_HEALTHBANNER_FORM_TEXT_TYPE, $configuration['config_text']);
             } else {
                 $errors[] = 'MY_HEALTHBANNER_FORM_TEXT_TYPE value is too long';
             }

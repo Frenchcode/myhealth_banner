@@ -23,12 +23,12 @@ class MyhealthbannerConfigurationController extends FrameworkBundleAdminControll
 
             if (empty($errors)) {
                 $this->addFlash('success', $this->trans('Successfull updated.', 'Admin.Notifications.Success'));
-                return $this->redirectToRoute('myhealthbanner_configuration');
+                return $this->redirectToRoute('myhealthbanner_configuration_form_simple');
             }
             $this->flashErrors($errors);
         }
-        return $this->render('@Modules/MyHealthBanner/Resources/views/templates/admin/form.html.twig', [
-            'myhealthbannerConfiguration' => $textForm->createView()
+        return $this->render('@Modules/myhealthbanner/views/templates/admin/form.html.twig', [
+            'myhealthbannerConfigurationForm' => $textForm->createView()
         ]);
     }
 }

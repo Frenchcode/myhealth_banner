@@ -9,7 +9,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "PrestaShop\\Module\\DemoSymfonyFormSimple\\": "src/"
+      "PrestaShop\\Module\\MyHealthBanner\\": "src/"
     }
   },
   "require": {
