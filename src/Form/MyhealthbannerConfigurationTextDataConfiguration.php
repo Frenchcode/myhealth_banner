@@ -12,7 +12,8 @@ use PrestaShop\PrestaShop\Core\ConfigurationInterface;
 final class MyhealthbannerConfigurationTextDataConfiguration implements DataConfigurationInterface
 {
     public const MY_HEALTHBANNER_FORM_TEXT_TYPE = 'MY_HEALTHBANNER_FORM_TEXT_TYPE';
-    public const CONFIG_MAXLENGTH = '32';
+    public const MY_HEALTHBANNER_FORM_TEXT_TYPE_PAY = 'MY_HEALTHBANNER_FORM_TEXT_TYPE_PAY';
+    public const CONFIG_MAXLENGTH = '144';
 
     /**
      * @var configurationInterface
@@ -27,7 +28,8 @@ final class MyhealthbannerConfigurationTextDataConfiguration implements DataConf
     public function getConfiguration(): array
     {
         $return = [];
-        $return['config_text'] = $this->configuration->get(static::MY_HEALTHBANNER_FORM_TEXT_TYPE);
+        $return ['config_text'] = $this->configuration->get(static::MY_HEALTHBANNER_FORM_TEXT_TYPE);
+        $return ['payment_text'] = $this->configuration->get(static::MY_HEALTHBANNER_FORM_TEXT_TYPE_PAY);
 
         return $return;
     }
@@ -44,9 +46,17 @@ final class MyhealthbannerConfigurationTextDataConfiguration implements DataConf
             if (strlen($configuration['config_text']) <= static::CONFIG_MAXLENGTH) {
                 $this->configuration->set(static::MY_HEALTHBANNER_FORM_TEXT_TYPE, $configuration['config_text']);
             } else {
-                $errors[] = 'MY_HEALTHBANNER_FORM_TEXT_TYPE value is too long';
+                $errors[] = 'Delivery Text too long';
             }
         }
+        if ($this->validatePaymentConfiguration($configuration)) {
+            if (strlen($configuration['payment_text']) <= static::CONFIG_MAXLENGTH) {
+                $this->configuration->set(static::MY_HEALTHBANNER_FORM_TEXT_TYPE_PAY, $configuration['payment_text']);
+            } else {
+                $errors[] = 'payment_text Text too long';
+            }
+        }
+
         /* Errors are returned here. */
         return $errors;
     }
@@ -59,5 +69,10 @@ final class MyhealthbannerConfigurationTextDataConfiguration implements DataConf
     public function validateConfiguration(array $configuration): bool
     {
         return isset($configuration['config_text']);
+    }
+
+    public function validatePaymentConfiguration(array $paymentConfiguration): bool
+    {
+        return isset($paymentConfiguration['payment_text']);
     }
 }

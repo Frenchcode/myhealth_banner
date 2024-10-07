@@ -14,7 +14,19 @@ class MyhealthbannerConfigurationFormType extends TranslatorAwareType
     {
         $builder
             ->add('config_text', TextType::class, [
-                'label' => $this->trans('Configuration text', 'Modules.Myhealthbanner.Admin'),
+                'label' => $this->trans('Delivery Text', 'Modules.Myhealthbanner.Admin'),
+                'help' => $this->trans('Maximum 32 characters', 'Modules.Myhealthbanner.Admin'),
+            ])
+            ->add('payment_text', TextType::class, [
+                'label' => $this->trans('Payment Text', 'Modules.Myhealthbanner.Admin'),
+                'help' => $this->trans('Maximum 32 characters', 'Modules.Myhealthbanner.Admin'),
+            ])
+            ->add('client_text', TextType::class, [
+                'label' => $this->trans('Client Text', 'Modules.Myhealthbanner.Admin'),
+                'help' => $this->trans('Maximum 32 characters', 'Modules.Myhealthbanner.Admin'),
+            ])
+            ->add('sold_text', TextType::class, [
+                'label' => $this->trans('Sold Text', 'Modules.Myhealthbanner.Admin'),
                 'help' => $this->trans('Maximum 32 characters', 'Modules.Myhealthbanner.Admin'),
             ]);
     }
