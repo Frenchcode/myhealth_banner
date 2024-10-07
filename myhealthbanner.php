@@ -98,6 +98,15 @@ class MyHealthBanner extends Module
                 'priority' => 1000,
             ]
         );
+
+        $this->context->controller->registerJavascript(
+            'mybanner-script',
+            'modules' .$this->name . '/views/js/myhealthbanner.js',
+            [
+                'position' => 'bottom',
+                'priority' => 1000,
+            ]
+        );
     }
 
 }
