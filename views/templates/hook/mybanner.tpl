@@ -1,5 +1,5 @@
 <!-- Block mymodule -->
 <div>
-    {$help}
+    {$sale_msg}
 </div>
 <!-- /Block mymodule -->

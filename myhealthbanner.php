@@ -19,7 +19,6 @@
  */
 declare(strict_types=1);
 
-use PrestaShop\PrestaShop\Core\ConfigurationInterface;
 
 if (!defined('_PS_VERSION_')) {
     exit();
@@ -81,6 +80,9 @@ class MyHealthBanner extends Module
         $this->context->smarty->assign([
             'message' => $this->l("This is working"),
             "delivery_msg" => Configuration::get('MY_HEALTHBANNER_FORM_TEXT_TYPE' ),
+            "payment_msg" => Configuration::get('MY_HEALTHBANNER_FORM_TEXT_TYPE_PAY'),
+            "client_msg" => Configuration::get('MY_HEALTHBANNER_FORM_TEXT_TYPE_CLIENT'),
+            "sale_msg" => Configuration::get("MY_HEALTHBANNER_FORM_TEXT_TYPE_SOLD")
         ]);
 
         return $this->display(__FILE__, 'mybanner.tpl');
