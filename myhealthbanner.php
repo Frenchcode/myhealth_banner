@@ -88,4 +88,16 @@ class MyHealthBanner extends Module
         return $this->display(__FILE__, 'mybanner.tpl');
     }
 
+    function hookActionFrontControllerSetMedia()
+    {
+        $this->context->controller->registerStylesheet(
+            'mybanner-style',
+            'modules' .$this->name . '/views/css/myhealthbanner.css',
+            [
+                'media' => 'all',
+                'priority' => 1000,
+            ]
+        );
+    }
+
 }
