@@ -63,7 +63,7 @@ final class MyhealthbannerConfigurationTextDataConfiguration implements DataConf
 
         if ($this->validateClientConfiguration($configuration)) {
             if (strlen($configuration['client_text']) <= static::CONFIG_MAXLENGTH) {
-                $this->configuration->set(static::MY_HEALTHBANNER_FORM_TEXT_TYPE_PAY, $configuration['client_text']);
+                $this->configuration->set(static::MY_HEALTHBANNER_FORM_TEXT_TYPE_CLIENT, $configuration['client_text']);
             } else {
                 $errors[] = 'client_text Text too long';
             }
@@ -71,7 +71,7 @@ final class MyhealthbannerConfigurationTextDataConfiguration implements DataConf
 
         if ($this->validateSoldConfiguration($configuration)) {
             if (strlen($configuration['sold_text']) <= static::CONFIG_MAXLENGTH) {
-                $this->configuration->set(static::MY_HEALTHBANNER_FORM_TEXT_TYPE_PAY, $configuration['sold_text']);
+                $this->configuration->set(static::MY_HEALTHBANNER_FORM_TEXT_TYPE_SOLD, $configuration['sold_text']);
             } else {
                 $errors[] = 'sold_text Text too long';
             }
