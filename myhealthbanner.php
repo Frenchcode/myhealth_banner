@@ -31,7 +31,7 @@ class MyHealthBanner extends Module
     {
         $this->name = 'myhealthbanner';
         $this->tab = 'front_office_features';
-        $this->version = '2.2.1';
+        $this->version = '2.3.1';
         $this->author = 'Ephraim Bokuma';
         $this->author_uri = 'https://www.ephraimbokuma.com';
         $this->need_instance = 0;
@@ -54,6 +54,7 @@ class MyHealthBanner extends Module
         return (
             parent::install()
             && $this->registerHook('displayBanner')
+            && $this->registerHook('actionFrontControllerSetMedia')
             && Configuration::updateValue('MYHEALTHBANNER', 'My Health Banner')
         );
     }
@@ -88,11 +89,11 @@ class MyHealthBanner extends Module
         return $this->display(__FILE__, 'mybanner.tpl');
     }
 
-    function hookActionFrontControllerSetMedia()
+    function hookActionFrontControllerSetMedia(): void
     {
         $this->context->controller->registerStylesheet(
             'mybanner-style',
-            'modules' .$this->name . '/views/css/myhealthbanner.css',
+            'modules/' .$this->name . '/views/css/myhealthbanner.css',
             [
                 'media' => 'all',
                 'priority' => 100,
@@ -101,7 +102,7 @@ class MyHealthBanner extends Module
 
         $this->context->controller->registerStylesheet(
             'owl-theme',
-            'modules' .$this->name . '/views/css/owl.theme.default.min.css',
+            'modules/' .$this->name . '/views/css/owl.theme.default.min.css',
             [
                 'media' => 'all',
                 'priority' => 150,
@@ -110,7 +111,7 @@ class MyHealthBanner extends Module
 
         $this->context->controller->registerStylesheet(
             'owl-carousel',
-            'modules' .$this->name . '/views/css/owl.carousel.min.css',
+            'modules/' .$this->name . '/views/css/owl.carousel.min.css',
             [
                 'media' => 'all',
                 'priority' => 150,
@@ -119,16 +120,16 @@ class MyHealthBanner extends Module
 
         $this->context->controller->registerJavascript(
             'mybanner-script',
-            'modules' .$this->name . '/views/js/myhealthbanner.js',
+            'modules/' .$this->name . '/views/js/myhealthbanner.js',
             [
                 'position' => 'bottom',
-                'priority' => 100,
+                'priority' => 200,
             ]
         );
 
         $this->context->controller->registerJavascript(
             'jquery-script',
-            'modules' .$this->name . '/views/js/jquery.min.js',
+            'modules/' .$this->name . '/views/js/jquery.min.js',
             [
                 'position' => 'bottom',
                 'priority' => 150,
@@ -137,7 +138,7 @@ class MyHealthBanner extends Module
 
         $this->context->controller->registerJavascript(
             'owl-script',
-            'modules' .$this->name . '/views/js/owl.carousel.min.js',
+            'modules/' .$this->name . '/views/js/owl.carousel.min.js',
             [
                 'position' => 'bottom',
                 'priority' => 200,
