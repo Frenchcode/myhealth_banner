@@ -13,6 +13,8 @@ final class MyhealthbannerConfigurationTextDataConfiguration implements DataConf
 {
     public const MY_HEALTHBANNER_FORM_TEXT_TYPE = 'MY_HEALTHBANNER_FORM_TEXT_TYPE';
     public const MY_HEALTHBANNER_FORM_TEXT_TYPE_PAY = 'MY_HEALTHBANNER_FORM_TEXT_TYPE_PAY';
+    public const MY_HEALTHBANNER_FORM_TEXT_TYPE_CLIENT = 'MY_HEALTHBANNER_FORM_TEXT_TYPE_CLIENT';
+    public const MY_HEALTHBANNER_FORM_TEXT_TYPE_SOLD = 'MY_HEALTHBANNER_FORM_TEXT_TYPE_SOLD';
     public const CONFIG_MAXLENGTH = '144';
 
     /**
@@ -30,6 +32,8 @@ final class MyhealthbannerConfigurationTextDataConfiguration implements DataConf
         $return = [];
         $return ['config_text'] = $this->configuration->get(static::MY_HEALTHBANNER_FORM_TEXT_TYPE);
         $return ['payment_text'] = $this->configuration->get(static::MY_HEALTHBANNER_FORM_TEXT_TYPE_PAY);
+        $return ['client_text'] = $this->configuration->get(static::MY_HEALTHBANNER_FORM_TEXT_TYPE_CLIENT);
+        $return ['sold_text'] = $this->configuration->get(static::MY_HEALTHBANNER_FORM_TEXT_TYPE_SOLD);
 
         return $return;
     }
@@ -57,6 +61,22 @@ final class MyhealthbannerConfigurationTextDataConfiguration implements DataConf
             }
         }
 
+        if ($this->validateClientConfiguration($configuration)) {
+            if (strlen($configuration['client_text']) <= static::CONFIG_MAXLENGTH) {
+                $this->configuration->set(static::MY_HEALTHBANNER_FORM_TEXT_TYPE_PAY, $configuration['client_text']);
+            } else {
+                $errors[] = 'client_text Text too long';
+            }
+        }
+
+        if ($this->validateSoldConfiguration($configuration)) {
+            if (strlen($configuration['sold_text']) <= static::CONFIG_MAXLENGTH) {
+                $this->configuration->set(static::MY_HEALTHBANNER_FORM_TEXT_TYPE_PAY, $configuration['sold_text']);
+            } else {
+                $errors[] = 'sold_text Text too long';
+            }
+        }
+
         /* Errors are returned here. */
         return $errors;
     }
@@ -74,5 +94,15 @@ final class MyhealthbannerConfigurationTextDataConfiguration implements DataConf
     public function validatePaymentConfiguration(array $paymentConfiguration): bool
     {
         return isset($paymentConfiguration['payment_text']);
+    }
+
+    public function validateClientConfiguration(array $clientConfiguration): bool
+    {
+        return isset($clientConfiguration['client_text']);
+    }
+
+    public function validateSoldConfiguration(array $soldConfiguration): bool
+    {
+        return isset($soldConfiguration['sold_text']);
     }
 }
