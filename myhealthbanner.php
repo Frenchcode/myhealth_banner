@@ -74,4 +74,14 @@ class MyHealthBanner extends Module
         Tools::redirectAdmin($route);
     }
 
+    public function hookDisplayBanner()
+    {
+        $this->context->smarty->assign([
+            'module_name' => Configuration::get('MYHEALTHBANNER'),
+            'banner_link' => $this->context->link->getPageLink('myhealthbanner', 'display'),
+        ]);
+
+        return $this->display(__FILE__, 'mybanner.tpl');
+    }
+
 }
