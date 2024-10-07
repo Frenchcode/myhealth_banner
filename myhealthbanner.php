@@ -95,7 +95,25 @@ class MyHealthBanner extends Module
             'modules' .$this->name . '/views/css/myhealthbanner.css',
             [
                 'media' => 'all',
-                'priority' => 1000,
+                'priority' => 100,
+            ]
+        );
+
+        $this->context->controller->registerStylesheet(
+            'owl-theme',
+            'modules' .$this->name . '/views/css/owl.theme.default.min.css',
+            [
+                'media' => 'all',
+                'priority' => 150,
+            ]
+        );
+
+        $this->context->controller->registerStylesheet(
+            'owl-carousel',
+            'modules' .$this->name . '/views/css/owl.carousel.min.css',
+            [
+                'media' => 'all',
+                'priority' => 150,
             ]
         );
 
@@ -104,9 +122,28 @@ class MyHealthBanner extends Module
             'modules' .$this->name . '/views/js/myhealthbanner.js',
             [
                 'position' => 'bottom',
-                'priority' => 1000,
+                'priority' => 100,
             ]
         );
+
+        $this->context->controller->registerJavascript(
+            'jquery-script',
+            'modules' .$this->name . '/views/js/jquery.min.js',
+            [
+                'position' => 'bottom',
+                'priority' => 150,
+            ]
+        );
+
+        $this->context->controller->registerJavascript(
+            'owl-script',
+            'modules' .$this->name . '/views/js/owl.carousel.min.js',
+            [
+                'position' => 'bottom',
+                'priority' => 200,
+            ]
+        );
+
     }
 
 }
