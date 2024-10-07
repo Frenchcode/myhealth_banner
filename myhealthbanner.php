@@ -19,6 +19,8 @@
  */
 declare(strict_types=1);
 
+use PrestaShop\PrestaShop\Core\ConfigurationInterface;
+
 if (!defined('_PS_VERSION_')) {
     exit();
 }
@@ -74,11 +76,11 @@ class MyHealthBanner extends Module
         Tools::redirectAdmin($route);
     }
 
-    public function hookDisplayBanner()
+    public function hookDisplayBanner($params): bool | string
     {
         $this->context->smarty->assign([
-            'module_name' => Configuration::get('MYHEALTHBANNER'),
-            'banner_link' => $this->context->link->getPageLink('myhealthbanner', 'display'),
+            'message' => $this->l("This is working"),
+            "delivery_msg" => Configuration::get('MY_HEALTHBANNER_FORM_TEXT_TYPE' ),
         ]);
 
         return $this->display(__FILE__, 'mybanner.tpl');
