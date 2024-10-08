@@ -3,6 +3,5 @@ myhealthbanner_configuration_form_simple:
   methods: [GET, POST]
   defaults:
     _controller: 'PrestaShop\Module\MyHealthBanner\Controller\MyhealthbannerConfigurationController::index'
-    # Needed to work with tab system
     _legacy_controller: AdminMyHealthBanner
     _legacy_link: AdminMyHealthBanner
