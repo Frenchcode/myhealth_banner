@@ -4,12 +4,12 @@
 
 #naslim-owl {
     text-align: center;
-    background-color: #f6f6f6;
+    background-color: black;
     padding-top: .5rem;
     padding-bottom: .1rem;
 }
 
 .item > h4 {
-    color: #7e6f4f;
+    color: #e9cf96;
     font-size: 1.1rem;
 }
