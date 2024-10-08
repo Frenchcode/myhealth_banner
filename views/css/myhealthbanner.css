@@ -8,3 +8,8 @@
     padding-top: .5rem;
     padding-bottom: .1rem;
 }
+
+.item > h4 {
+    color: #7e6f4f;
+    font-size: 1.1rem;
+}
