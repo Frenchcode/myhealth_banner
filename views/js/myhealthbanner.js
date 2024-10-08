@@ -7,7 +7,8 @@ $(document).ready(function(){
         autoplayTimeout:5000,
         autoplayHoverPause:false,
         lazyLoad: true,
-        animateOut: 'fadeOut',
+        animateIn: 'animate__fadeInDown',
+        animateOut: 'animate__fadeOutLeft',
         responsive:{
             0:{
                 items:1

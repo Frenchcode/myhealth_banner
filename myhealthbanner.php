@@ -118,6 +118,15 @@ class MyHealthBanner extends Module
             ]
         );
 
+        $this->context->controller->registerStylesheet(
+            'animate-css',
+            'modules/' .$this->name . '/views/css/animate.min.css',
+            [
+                'media' => 'all',
+                'priority' => 150,
+            ]
+        );
+
         $this->context->controller->registerJavascript(
             'mybanner-script',
             'modules/' .$this->name . '/views/js/myhealthbanner.js',
